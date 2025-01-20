@@ -1,3 +1,4 @@
+import Question from '@/pages/question.vue'
 import { zhHant } from 'vuetify/locale'
 
 export default {
@@ -13,6 +14,7 @@ export default {
     adminOrders: '訂單管理',
     home: '首頁',
     product: '商品',
+    tarot: '塔羅頁面',
   },
   register: {
     submit: '建立帳號',
@@ -21,6 +23,13 @@ export default {
   login: {
     submit: '登入',
     success: '登入成功',
+  },
+  tarot: {
+    index: '透視未知，讓光芒指引前行',
+    one: '單張牌',
+    three: '三張牌',
+    six: '六張牌',
+    question: '輸入您的問題',
   },
   logout: {
     success: '登出成功',

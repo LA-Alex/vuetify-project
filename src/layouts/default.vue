@@ -58,6 +58,7 @@ const navs = computed(() => {
       show: user.isLoggedIn,
     },
     { to: '/admin', text: t('nav.admin'), icon: 'mdi-cog', show: user.isLoggedIn && user.isAdmin },
+    { to: '/tarot', text: t('nav.tarot'), icon: 'shopping_cart', show: !user.isLoggedIn },
   ]
 })
 

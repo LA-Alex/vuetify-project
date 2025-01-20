@@ -71,5 +71,5 @@ getOrders()
 <route lang="yaml">
 meta:
   login: true
-  title: 'nav.orders'
+  title: '.orders'
 </route>
