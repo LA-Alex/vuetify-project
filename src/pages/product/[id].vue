@@ -1,30 +1,47 @@
 <template>
-  <v-container>
+  <v-container width="70%">
     <v-row>
       <v-col cols="12">
         <h1 class="text-center">{{ product.name }}</h1>
       </v-col>
       <v-divider></v-divider>
       <v-col cols="12" md="6">
-        <v-img :src="product.image"></v-img>
+        <v-img :src="product.image" width="100%" height="500px" style="object-fit: cover"></v-img>
       </v-col>
-      <v-col cols="12" md="6">
-        <p>{{ $t('productCategory.' + product.category) }}</p>
-        <p>{{ product.price }}</p>
-        <p>{{ product.description }}</p>
+      <v-col cols="12" md="6" class="text-center">
+        <h3 style="font-size: 30px">{{ $t('product.introduce') }}</h3>
+        <p class="ma-10">{{ product.description }}</p>
+        <p style="margin-bottom: 10px">
+          {{ $t('productCategory.' + product.category) }}
+        </p>
         <v-form :disabled="isSubmitting" @submit.prevent="submit">
           <v-text-field
             v-model.number="quantity.value.value"
             type="number"
             :error-messages="quantity.errorMessage.value"
           ></v-text-field>
-          <v-btn type="submit" prepend-icon="mdi-cart" :loading="isSubmitting">{{
-            $t('product.addCart')
-          }}</v-btn>
+          <p style="font-size: 20px" class="ma-3">{{ '$' + product.price }}</p>
+
+          <v-btn
+            type="submit"
+            prepend-icon="mdi-cart"
+            :loading="isSubmitting"
+            style="border: 1px solid aqua; border-radius: 30px; width: 40%"
+            >{{ $t('product.addCart') }}</v-btn
+          >
         </v-form>
       </v-col>
     </v-row>
   </v-container>
+  <v-container width="70%">
+    <h2 class="text-center my-5">{{ $t('product.maybe') }}</h2>
+    <v-row>
+      <v-col v-for="item in recommendedProducts" :key="item._id" cols="12" md="3" lg="3">
+        <product-card v-bind="item"></product-card>
+      </v-col>
+    </v-row>
+  </v-container>
+
   <v-overlay
     :model-value="!product.sell"
     class="align-center justify-center"
@@ -118,6 +135,21 @@ const submit = handleSubmit(async (values) => {
     })
   }
 })
+
+const recommendedProducts = ref([])
+
+const getRecommendedProducts = async () => {
+  try {
+    const { data } = await api.get('/product')
+    recommendedProducts.value = data.result
+      .filter((item) => item._id !== product.value._id) // 過濾掉當前商品
+      .slice(0, 4) // 取前 4 筆作為推薦
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+getRecommendedProducts()
 </script>
 
 <route lang="yaml">

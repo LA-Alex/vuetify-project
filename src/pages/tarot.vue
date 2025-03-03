@@ -1,63 +1,116 @@
 <template>
-  <v-container class="container">
-    <v-row justify="center" align="center" style="min-height: 100vh">
+  <v-container>
+    <v-row>
+      <v-col cols="12 " lg="12">
+        <swiper
+          :spaceBetween="30"
+          :centeredSlides="true"
+          :autoplay="{
+            delay: 5000,
+            disableOnInteraction: false,
+          }"
+          :pagination="{
+            clickable: true,
+          }"
+          :navigation="true"
+          :modules="modules"
+          class="mySwiper"
+        >
+          <swiper-slide><img src="../assets/LI.jpg" /></swiper-slide>
+          <swiper-slide><img src="../assets/LI (1).jpg" /></swiper-slide>
+          <swiper-slide><img src="../assets/LI (2).jpg" /></swiper-slide>
+        </swiper>
+      </v-col>
+    </v-row>
+  </v-container>
+
+  <v-container width="80%">
+    <v-row class="">
       <v-col cols="12">
-        <h1 class="text-center" style="font-size: 50px">{{ $t('tarot.index') }}</h1>
+        <v-text-field v-model="search" prepend-inner-icon="mdi-magnify"></v-text-field>
       </v-col>
-      <v-col cols="12" class="d-flex justify-center align-center">
-        <div class="card-wrapper">
-          <img src="../assets/index.png" class="card" alt="Tarot Image" />
-        </div>
+      <v-col v-for="product of filteredProducts" :key="product._id" cols="12" md="3" lg="3">
+        <product-card v-bind="product" style="height: 500px"></product-card>
       </v-col>
-      <v-col cols="12" class="d-flex justify-center">
-        <v-btn density="comfortable" @click="open">點我進入下一頁</v-btn>
+      <v-col cols="12">
+        <v-pagination v-model="currentPage" :length="totalPage"></v-pagination>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
-<style>
-.container {
-  background-image: url(''); /* 替换为你的背景图片路径 */
-  background-size: cover;
-  background-position: center;
+<script setup>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { ref, computed } from 'vue'
+import { useAxios } from '@/composables/axios'
+import ProductCard from '@/components/ProductCard.vue'
+import { Autoplay, Pagination, Navigation } from 'swiper/modules'
+
+const { api } = useAxios()
+
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+
+const modules = [Autoplay, Pagination, Navigation]
+
+const ITEMS_PER_PAGE = 6
+const currentPage = ref(1)
+const totalPage = computed(() => Math.ceil(products.value.length / ITEMS_PER_PAGE))
+const products = ref([])
+const search = ref('')
+const filteredProducts = computed(() => {
+  return (
+    products.value
+      .filter((product) => product.name.toLowerCase().includes(search.value.toLowerCase()))
+      // 一頁 2 筆
+      // 第 1 頁 = 0 ~ 1
+      // 第 2 頁 = 2 ~ 3
+      // 第 3 頁 = 4 ~ 5
+      // .slice(開始索引, 結束索引)
+      // 不包含結束索引
+      .slice((currentPage.value - 1) * ITEMS_PER_PAGE, currentPage.value * ITEMS_PER_PAGE)
+  )
+})
+
+const getProducts = async () => {
+  try {
+    const { data } = await api.get('/product')
+    products.value.push(...data.result)
+  } catch (error) {
+    console.log(error)
+  }
 }
-.card-wrapper {
-  perspective: 1000px;
+getProducts()
+</script>
+<style scoped>
+.swiper {
+  width: 100%;
+  height: 700px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.card {
-  max-width: 300px;
-  transform-style: preserve-3d;
-  animation: rotate 5s infinite linear;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotateY(0deg); /* 旋轉角度改為 rotateY */
-  }
-  50% {
-    transform: rotateY(180deg); /* 180度翻轉 */
-  }
-  100% {
-    transform: rotateY(360deg); /* 完成 360度旋轉 */
-  }
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
 
-<script setup>
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
-const open = () => {
-  router.push('/choice')
-}
-</script>
-
 <route lang="yaml">
 meta:
-  title: 'nav.tarot'
+  login: false
+  admin: false
+  title: 'nav.home'
 </route>

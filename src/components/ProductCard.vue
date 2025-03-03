@@ -1,13 +1,24 @@
 <template>
-  <v-card>
-    <v-img :src="image" height="200" cover></v-img>
-    <v-card-title>
-      <router-link :to="'/product/' + _id">{{ name }}</router-link>
-    </v-card-title>
-    <v-card-subtitle>{{ $t('productCategory.' + category) }}</v-card-subtitle>
-    <v-card-subtitle>{{ price }}</v-card-subtitle>
-    <v-card-text>{{ description }}</v-card-text>
-  </v-card>
+  <router-link :to="'/product/' + _id" style="color: white; text-decoration: none">
+    <v-card style="text-align: center">
+      <v-img :src="image" height="300px" cover></v-img>
+      <v-card-title>
+        {{ name }}
+      </v-card-title>
+      <div style="height: 110px">
+        <v-card-subtitle>{{ $t('productCategory.' + category) }}</v-card-subtitle>
+        <v-card-subtitle style="font-size: 20px; color: aqua">{{ '$' + price }}</v-card-subtitle>
+        <v-btn
+          type="submit"
+          prepend-icon="mdi-cart"
+          :loading="isSubmitting"
+          height="45px"
+          style="border: 1px solid aqua; border-radius: 30px"
+          >{{ $t('product.addCart') }}
+        </v-btn>
+      </div>
+    </v-card>
+  </router-link>
 </template>
 
 <script setup>

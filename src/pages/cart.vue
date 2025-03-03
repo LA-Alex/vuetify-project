@@ -4,7 +4,7 @@
       <v-col cols="12">
         <h1 class="text-center">{{ $t('nav.cart') }}</h1>
       </v-col>
-      <v-divider></v-divider>
+
       <v-col cols="12">
         <v-list lines="two">
           <template v-for="(item, i) in cart" :key="item._id">
@@ -41,11 +41,36 @@
           </template>
         </v-list>
       </v-col>
-      <v-col cols="12" class="text-center">
-        <p>{{ total }}</p>
-        <v-btn color="primary" :disabled="!canCheckout" @click="checkout">{{
-          $t('cart.checkout')
-        }}</v-btn>
+      <v-col cols="12" class="text-center" style="font-size: 20px">
+        <p style="margin: 20px">{{ $t('cart.total') + '$' + total }}</p>
+        <v-btn
+          style="border: 1px solid aqua; border-radius: 30px"
+          :disabled="!canCheckout"
+          @click="checkout"
+          width="100px"
+          >{{ $t('cart.checkout') }}</v-btn
+        >
+      </v-col>
+    </v-row>
+  </v-container>
+  <v-divider></v-divider>
+  <!-- 訂單 -->
+  <v-container>
+    <v-row>
+      <v-col cols="12">
+        <h1 class="text-center">{{ $t('nav.orders') }}</h1>
+      </v-col>
+
+      <v-col cols="12">
+        <v-data-table :items="orders" :headers="headers">
+          <template #[`item.cart`]="data">
+            <ul>
+              <li v-for="item in data.item.cart" :key="item._id">
+                {{ item.product.name }} x {{ item.quantity }}
+              </li>
+            </ul>
+          </template>
+        </v-data-table>
       </v-col>
     </v-row>
   </v-container>
@@ -116,6 +141,44 @@ const checkout = async () => {
     })
   }
 }
+
+// 訂單
+const orders = ref([])
+
+const headers = computed(() => {
+  return [
+    { title: 'ID', key: '_id' },
+    {
+      title: t('order.createdAt'),
+      key: 'createdAt',
+      value: (item) => new Date(item.createdAt).toLocaleString(),
+    },
+    { title: t('order.cart'), key: 'cart', sortable: false },
+    {
+      title: t('order.price'),
+      key: 'price',
+      value: (item) => {
+        return item.cart.reduce((acc, cur) => acc + cur.product.price * cur.quantity, 0)
+      },
+    },
+  ]
+})
+
+const getOrders = async () => {
+  try {
+    const { data } = await apiAuth.get('/order')
+    orders.value = data.result
+  } catch (error) {
+    console.log(error)
+    createSnackbar({
+      text: t('api.' + (error?.response?.data?.message || 'unknownError')),
+      snackbarProps: {
+        color: 'red',
+      },
+    })
+  }
+}
+getOrders()
 </script>
 
 <route lang="yaml">

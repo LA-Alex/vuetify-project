@@ -39,7 +39,9 @@
             counter
           />
           <div class="text-center">
-            <v-btn :loading="isSubmitting" type="submit" color="primary">{{ $t('register.submit') }}</v-btn>
+            <v-btn :loading="isSubmitting" type="submit" color="primary">{{
+              $t('register.submit')
+            }}</v-btn>
           </div>
         </v-form>
       </v-col>
@@ -107,13 +109,13 @@ const submit = handleSubmit(async (values) => {
     await api.post('/user', {
       account: values.account,
       email: values.email,
-      password: values.password
+      password: values.password,
     })
     createSnackbar({
       text: t('register.success'),
       snackbarProps: {
-        color: 'green'
-      }
+        color: 'green',
+      },
     })
     router.push('/login')
   } catch (error) {
@@ -121,8 +123,8 @@ const submit = handleSubmit(async (values) => {
     createSnackbar({
       text: t('api.' + (error?.response?.data?.message || 'unknownError')),
       snackbarProps: {
-        color: 'red'
-      }
+        color: 'red',
+      },
     })
   }
 })
