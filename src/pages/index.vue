@@ -69,8 +69,8 @@
               />
             </v-col>
             <v-col cols="12" lg="2" class="v-col">
-              <h2>{{ $t('index.four') }}</h2>
-              <p>{{ $t('index.fourText') }}</p>
+              <h2>{{ $t('index.five') }}</h2>
+              <p>{{ $t('index.fiveText') }}</p>
 
               <img
                 class="img"
@@ -427,7 +427,7 @@ h1 {
 .starSigns:nth-child(7) {
   bottom: 0%;
   width: 320px;
-  left: 5%;
+  left: 15%;
 }
 .starSigns:nth-child(8) {
   bottom: 10%;

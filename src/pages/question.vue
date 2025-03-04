@@ -17,7 +17,7 @@
 
       <!-- 增加間距 -->
 
-      <v-col cols="12" class="pa-10"></v-col>
+      <v-col cols="12" class="pa-10 text"></v-col>
 
       <v-col cols="12" class="d-flex justify-center">
         <v-textarea
@@ -27,13 +27,13 @@
           color="cyan"
           :label="$t('choice.label')"
           outlined
-          class="pa-3"
+          class="pa-3 textarea"
           style="max-width: 700px; width: 100%; height: 400px"
         ></v-textarea>
       </v-col>
 
       <!-- 按鈕 -->
-      <v-col cols="12" class="d-flex justify-center">
+      <v-col cols="12" class="d-flex justify-center btn">
         <v-btn color="#d89e31" :disabled="!question" @click="nextpage">{{
           $t('choice.yes')
         }}</v-btn>
@@ -169,6 +169,15 @@ const starSigns = [
 @media (max-width: 1024px) {
   .starSigns {
     display: none;
+  }
+}
+@media (max-width: 600px) {
+  .text {
+    padding: 0s;
+  }
+  .btn {
+    position: absolute;
+    bottom: 0px;
   }
 }
 </style>

@@ -37,6 +37,9 @@ export default {
     helpText:
       'Looking for a more precise tarot reading? Our professional tarot readers are here to help.',
     date: 'Book a Tarot Reading',
+    five: '“All conditioned phenomena are like a dream, an illusion, a bubble, a shadow, like dew and lightning. Thus should one view them.”',
+    fiveText:
+      'All things are impermanent, like dreams, illusions, bubbles, shadows, morning dew, and flashes of lightning—passing in an instant. One should not cling to appearances but face life with clear wisdom. Tarot cards are like a mirror, reflecting the inner self and revealing the flow of energy in the present moment. They help us observe our emotions and attachments, understanding the law of impermanence. As the *Diamond Sutra* states: “One should give rise to a mind that does not abide anywhere.” Tarot guidance is not about clinging to the future but about helping us find balance in the present and flow with change.',
   },
   register: {
     submit: 'Create Account',

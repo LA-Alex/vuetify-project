@@ -38,6 +38,9 @@ export default {
     helpText:
       "Besoin d'une lecture de tarot plus précise ? Nos tarologues professionnels sont là pour résoudre vos questions.",
     date: 'Réservez une lecture de tarot',
+    five: '« Tous les phénomènes conditionnés sont comme un rêve, une illusion, une bulle, une ombre, comme la rosée et l’éclair. Ainsi faut-il les contempler. »',
+    fiveText:
+      'Toutes choses sont impermanentes, semblables à des rêves, des illusions, des bulles, des ombres, à la rosée du matin et aux éclairs—évanescentes en un instant. Il ne faut pas s’attacher aux apparences, mais faire face à la vie avec une sagesse claire. Le tarot est comme un miroir, reflétant notre être intérieur et révélant le flux d’énergie du moment présent. Il nous aide à observer nos émotions et nos attachements, à comprendre la loi de l’impermanence. Comme l’enseigne le *Sūtra du Diamant* : « On doit éveiller un esprit qui ne s’attache à rien. » L’orientation du tarot ne consiste pas à s’accrocher à l’avenir, mais à nous aider à trouver un équilibre dans l’instant présent et à suivre le cours du changement.',
   },
   register: {
     submit: 'Créer un compte',
