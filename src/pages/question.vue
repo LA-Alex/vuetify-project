@@ -9,8 +9,8 @@
 
       <div ref="stars"></div>
       <v-col cols="12">
-        <h1 class="text-center" style="font-size: 50px">{{ $t('tarot.question') }}</h1>
-        <h1 class="text-center" style="font-size: 60px; color: #cccc99">
+        <h1 class="text-center h1">{{ $t('tarot.question') }}</h1>
+        <h1 class="text-center h2">
           {{ $t('tarot.question2') }}
         </h1>
       </v-col>
@@ -112,7 +112,13 @@ const starSigns = [
   opacity: 0;
   animation: twinkle 5s infinite;
 }
-
+.h1 {
+  font-size: 50px;
+}
+.h2 {
+  font-size: 60px;
+  color: #cccc99;
+}
 @keyframes twinkle {
   0% {
     opacity: 0;
@@ -177,7 +183,17 @@ const starSigns = [
   }
   .btn {
     position: absolute;
-    bottom: 0px;
+    bottom: 80px;
+  }
+  .h1 {
+    font-size: 30px;
+  }
+  .h2 {
+    font-size: 40px;
+    color: #cccc99;
+  }
+  .text {
+    display: none;
   }
 }
 </style>

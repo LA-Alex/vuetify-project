@@ -8,7 +8,7 @@
       <Star />
 
       <!-- 1 -->
-      <v-col cols="12" sm="12" md="3" lg="4">
+      <v-col cols="12" sm="12" md="6" lg="4">
         <v-card class="text-center v-card">
           <v-card-title style="font-size: 20px">{{ $t('choice.one') }}</v-card-title>
           <div class="card-container mx-auto">
@@ -34,7 +34,7 @@
         </v-card>
       </v-col>
       <!-- 3 -->
-      <v-col cols="12" sm="12" md="3" lg="4">
+      <v-col cols="12" sm="12" md="6" lg="4">
         <v-card class="text-center v-card">
           <v-card-title style="font-size: 20px">{{ $t('choice.three') }}</v-card-title>
           <div class="card-container mx-auto">
@@ -60,7 +60,7 @@
         </v-card>
       </v-col>
       <!-- 5 -->
-      <v-col cols="12" sm="12" md="3" lg="4">
+      <v-col cols="12" sm="12" md="6" lg="4">
         <v-card class="text-center v-card">
           <v-card-title style="font-size: 20px">{{ $t('choice.five') }}</v-card-title>
           <div class="card-container mx-auto">
@@ -86,8 +86,8 @@
         </v-card>
       </v-col>
       <!-- 7 -->
-      <v-col cols="12" sm="12" md="3" lg="4">
-        <v-card class="text-center v-card">
+      <v-col cols="12" sm="12" md="6" lg="4">
+        <v-card class="text-center v-card" id="card">
           <v-card-title style="font-size: 20px">{{ $t('choice.seven') }}</v-card-title>
           <div class="card-container mx-auto">
             <div
@@ -112,7 +112,7 @@
         </v-card>
       </v-col>
       <!-- 9 -->
-      <v-col cols="12" sm="12" md="3" lg="4">
+      <v-col cols="12" sm="12" md="6" lg="4" id="card">
         <v-card class="text-center v-card">
           <v-card-title style="font-size: 20px">{{ $t('choice.nine') }}</v-card-title>
           <div class="card-container mx-auto">
@@ -138,7 +138,7 @@
         </v-card>
       </v-col>
       <!-- 11 -->
-      <v-col cols="12" sm="12" md="3" lg="4">
+      <v-col cols="12" sm="12" md="6" lg="4" id="card">
         <v-card class="text-center v-card">
           <v-card-title style="font-size: 20px">{{ $t('choice.mine') }}</v-card-title>
           <div class="card-container mx-auto">
@@ -164,8 +164,8 @@
         </v-card>
       </v-col>
       <!-- 13 -->
-      <v-col cols="12" sm="12" md="3" lg="4">
-        <v-card class="text-center v-card">
+      <v-col cols="12" sm="12" md="6" lg="4">
+        <v-card class="text-center v-card" id="card">
           <v-card-title style="font-size: 20px">{{ $t('choice.years') }}</v-card-title>
           <div class="card-container mx-auto">
             <div
@@ -258,5 +258,10 @@ const isFlipped7 = ref(false)
 .row {
   max-width: 60%;
   margin: 0 auto;
+}
+@media (max-width: 600px) {
+  #card {
+    display: none;
+  }
 }
 </style>

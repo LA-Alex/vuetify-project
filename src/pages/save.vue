@@ -10,7 +10,6 @@
             <v-btn @click="deleteRecord(record._id)"> {{ $t('tarot.delete') }} </v-btn>
           </v-card-title>
           <v-card-subtitle class="tarot-subtitle">
-            <strong>{{ $t('tarot.selectedCards') }}:</strong>
             <div class="tarot-images">
               <img
                 v-for="(card, index) in record.selectedCards"

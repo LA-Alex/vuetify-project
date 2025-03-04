@@ -85,7 +85,7 @@
         {{ link.name }}
       </v-btn>
       <v-col class="text-center mt-4" cols="12">
-        {{ new Date().getFullYear() }} — <strong>light</strong>
+        {{ new Date().getFullYear() }} — <strong>光芒塔羅擁有</strong>
       </v-col>
     </v-row>
   </v-footer>
@@ -125,12 +125,13 @@ const navs = computed(() => {
   ]
 })
 
-const links = [
-  { name: 'Home', href: '/' },
-  { name: 'About Us', href: '/tarot' },
-  { name: 'Instagram', href: 'https://www.instagram.com/fantastic_ie2?igsh=aWFzamptamRxc3lz' },
-  { name: 'Contact Us', href: '/' },
-]
+const links = computed(() => {
+  return [
+    { name: 'Home', href: '/' },
+    { name: 'About Us', href: '/' },
+    { name: 'Instagram', href: 'https://www.instagram.com/fantastic_ie2?igsh=aWFzamptamRxc3lz' },
+  ]
+})
 
 const langs = [
   { text: '繁體中文', value: 'zhHant' },
@@ -188,7 +189,7 @@ const logout = async () => {
     margin: 10px;
   }
   .light {
-    width: 50px;
+    display: none;
   }
   .bar {
     font-size: 12px;
