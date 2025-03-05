@@ -2,6 +2,8 @@
   <v-container>
   <v-row>
     <Star />
+    <ad />
+
 
     <v-col cols="12">
       <h1 class="text-center">{{ $t('tarot.aipage') }}</h1></v-col
@@ -38,6 +40,8 @@ import { ref } from 'vue'
 import { useAxios } from '@/composables/axios'
 import Star from '@/components/Star.vue'
 import { useI18n } from 'vue-i18n'
+import ad from '@/components/ad.vue'
+
 
 const { t } = useI18n()
 const { apiAuth } = useAxios()
