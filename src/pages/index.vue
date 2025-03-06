@@ -9,7 +9,7 @@
         </v-col>
         <v-row class="h-screen">
           <div ref="stars"></div>
-          <Meteor />
+          <!-- <Meteor /> -->
           <v-col cols="12">
             <h1 class="text-center">{{ $t('tarot.index') }}</h1>
           </v-col>
