@@ -84,7 +84,7 @@ export default {
     five: '五張牌',
     seven: '七張牌',
     nine: '九張牌',
-    mine: '簡羽杋專用',
+    mine: '阿比專用',
     years: '流年運勢牌陣',
     label: '輸入您的問題',
   },

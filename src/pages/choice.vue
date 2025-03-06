@@ -131,7 +131,7 @@
             </div>
           </div>
           <v-card-actions class="justify-center" style="font-size: 18px">
-            <v-btn color="primary" style="font-size: 18px" @click="goToDrawPage(7)">{{
+            <v-btn color="primary" style="font-size: 18px" @click="goToDrawPage(9)">{{
               $t('choice.yes')
             }}</v-btn>
           </v-card-actions>

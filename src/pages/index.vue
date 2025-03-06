@@ -352,9 +352,7 @@ h1 {
     margin: 0;
 
     img {
-      width: 150px;
-      top: -120px;
-      left: 0px;
+      display: none;
     }
     h2 {
       font-size: 22px;

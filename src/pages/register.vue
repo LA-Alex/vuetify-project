@@ -117,7 +117,10 @@ const submit = handleSubmit(async (values) => {
         color: 'green',
       },
     })
-    router.push('/login')
+
+    resetForm()
+
+    router.push('/')
   } catch (error) {
     console.log(error)
     createSnackbar({

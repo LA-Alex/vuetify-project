@@ -127,8 +127,8 @@ const navs = computed(() => {
 
 const links = computed(() => {
   return [
-    { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/' },
+    { name: 'Home', href: '/vuetify-project/' },
+
     { name: 'Instagram', href: 'https://www.instagram.com/fantastic_ie2?igsh=aWFzamptamRxc3lz' },
   ]
 })
